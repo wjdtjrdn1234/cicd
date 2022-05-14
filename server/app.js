@@ -37,6 +37,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use('/api', require('./routes/api'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -59,3 +60,6 @@ module.exports = app;
 // npm install -S swagger-ui-express swagger-jsdoc
 //swagger-ui-express: express와 관련된 swagger ui 라이브러리
 //swagger-jsdoc: 자바스크립트 주석을 처리하면 주석내용을 swagger에 반영하는 라이브러리
+
+
+//http://localhost:4000/api-docs/ 접속하면 api를 문서화해서 볼 수 있음
