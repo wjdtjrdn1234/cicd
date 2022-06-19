@@ -1,9 +1,20 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  useEffect(getHello);
+
+  function getHello() {
+    const greet = document.getElementById("greet");
+    fetch(import.meta.env.VITE_API_SERVER + '/api/hello')
+      .then((response) => response.json())
+      .then((data) => (greet.innerHTML = JSON.stringify(data)));
+  }
+  
+    
 
   return (
     <div className="App">
@@ -16,6 +27,10 @@ function App() {
           </button>
         </p>
         <p>
+          api called: <code id="greet"></code>
+        </p>
+
+        <p>
           Edit <code>App.jsx</code> and save to test HMR updates.
         </p>
         <p>
@@ -27,7 +42,7 @@ function App() {
           >
             Learn React
           </a>
-          {' | '}
+          {" | "}
           <a
             className="App-link"
             href="https://vitejs.dev/guide/features.html"
@@ -39,7 +54,7 @@ function App() {
         </p>
       </header>
     </div>
-  )
+  );
 }
 
 export default App

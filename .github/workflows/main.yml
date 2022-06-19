@@ -16,6 +16,10 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             ./deploy.sh
+            
+#push를 하면 내부적으로 도커가 실행되고 , github action에서 ssh-action을 사용
+#ssh접속이 완료되면, deploy.sh실행
+
 # # This is a basic workflow to help you get started with Actions
 
 # name: CI

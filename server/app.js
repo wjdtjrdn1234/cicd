@@ -25,6 +25,10 @@ const options = {
 const openapiSpec = swaggerJsdoc(options);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpec)); //api-docs 접속하면 seagger문서를 볼 수 있음
 
+var cors = require('cors'); //cors허용
+app.use(cors());
+
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
